@@ -12,33 +12,18 @@ export interface IState {
 
 const initialState = [
   {
-    name: "Chuks Joshua",
-    age: 24,
-    url: "https://res.cloudinary.com/chuksmbanaso/image/upload/v1654742567/media/DSC_1586_nud6uj.jpg",
-    note: "I am the best developer in the world"
-  },
-  {
     name: "Jane Oma",
     age: 27,
     url: "https://res.cloudinary.com/chuksmbanaso/image/upload/v1647635381/media/pic6_wzlbhc.jpg",
-    note: "She is my lest favorite person"
+    note: "She is my favorite person"
   },
-
-  {
-    name: "Nkiru Nelly",
-    age: 30,
-    url: "https://res.cloudinary.com/chuksmbanaso/image/upload/v1647635366/media/pic5_lbarig.jpg",
-    note: "Single babe in town"
-  },
-  
-  
 ]
 
 const getLocalStorage = () => {
-    let initialState = localStorage.getItem('initialState');
+    let people = localStorage.getItem('people');
     
-  if (typeof initialState === "string") {
-    return (initialState = JSON.parse(initialState))
+  if (typeof people === "string") {
+    return (people = JSON.parse(people))
   } else {
     return [];
   }
@@ -53,8 +38,8 @@ function App() {
   const [people, setPeople] = useState<IState["people"]>(getLocalStorage())
 
   useEffect(() => {
-      localStorage.setItem('initialState', JSON.stringify(initialState));
-}, [])
+      localStorage.setItem('people', JSON.stringify(people));
+}, [people])
 
 
 
